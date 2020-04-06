@@ -28,10 +28,6 @@ public class LeeCoMessageDecode extends LengthFieldBasedFrameDecoder {
 
     @Override
     protected Object decode(ChannelHandlerContext ctx, ByteBuf in) throws Exception {
-        ByteBuf frame = (ByteBuf) super.decode(ctx,in);
-        if (frame == null){
-            return null;
-        }
         LeeCoMessage message = new LeeCoMessage();
         Header header = new Header();
         header.setCrcCode(in.readInt());

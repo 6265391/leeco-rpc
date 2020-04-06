@@ -28,6 +28,7 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
         Header header = new Header();
         header.setType(MessageType.LOGIN_RESP.value());
         message.setHeader(header);
+        message.setBody(result);
         return message;
     }
 
