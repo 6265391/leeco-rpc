@@ -32,9 +32,9 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         LeeCoMessage message = (LeeCoMessage) msg;
-        System.out.println(message.getHeader().getType());
+        LeeCoRpcApplication.logger.info(message.getHeader().toString());
         // 如果是握手请求消息
         if (message.getHeader() != null && message.getHeader().getType() == MessageType.LOGIN_REQ.value()){
             String nodeIndex = ctx.channel().remoteAddress().toString();
@@ -65,7 +65,7 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         ctx.fireExceptionCaught(cause);
     }
 }

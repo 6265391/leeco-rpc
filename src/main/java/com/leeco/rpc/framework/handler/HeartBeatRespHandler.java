@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter {
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         LeeCoMessage message = (LeeCoMessage) msg;
         // 握手成功 主动发送心跳消息
         if (message.getHeader() != null && message.getHeader().getType() == MessageType.LOGIN_REQ.value()){
@@ -41,7 +41,7 @@ public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         ctx.fireExceptionCaught(cause);
     }
 }

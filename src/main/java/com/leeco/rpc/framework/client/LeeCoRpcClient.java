@@ -52,16 +52,19 @@ public class LeeCoRpcClient {
                                     .addLast(new HeartBeatReqHandler());
                         }
                     });
-            ChannelFuture sync = bootstrap.connect(new InetSocketAddress(host,port),new InetSocketAddress(NettyConstant.LOCALIP,NettyConstant.LOCAL_PORT)).sync();
+            ChannelFuture sync = bootstrap.connect(new InetSocketAddress(host,port),new InetSocketAddress(NettyConstant.LOCAL_IP,NettyConstant.LOCAL_PORT)).sync();
             sync.channel().closeFuture().sync();
-        }finally {
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
             // 释放资源hi后 清空资源 再次发起重连操作
             executor.execute(new Runnable() {
                 @Override
                 public void run() {
                     try{
                         TimeUnit.SECONDS.sleep(5);
-                        connect(NettyConstant.REMOTEIP,NettyConstant.PORT);
+                        connect(NettyConstant.REMOTE_IP,NettyConstant.PORT);
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -71,7 +74,7 @@ public class LeeCoRpcClient {
     }
 
     public static void main(String[] args) throws Exception {
-        new LeeCoRpcClient().connect(NettyConstant.REMOTEIP,NettyConstant.PORT);
+        new LeeCoRpcClient().connect(NettyConstant.REMOTE_IP,NettyConstant.PORT);
     }
 
 }

@@ -16,7 +16,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 public class LoginAuthReqHandler extends ChannelInboundHandlerAdapter {
 
     @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    public void channelActive(ChannelHandlerContext ctx) {
         ctx.writeAndFlush(buildLoginReq());
     }
 
@@ -30,7 +30,7 @@ public class LoginAuthReqHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         LeeCoMessage message = (LeeCoMessage) msg;
         // 如果是握手应答消息 判断是否认证成功
         if (message.getHeader() != null && message.getHeader().getType() == MessageType.LOGIN_RESP.value()){
@@ -48,7 +48,7 @@ public class LoginAuthReqHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         ctx.fireExceptionCaught(cause);
     }
 }

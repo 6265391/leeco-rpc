@@ -13,8 +13,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 
 /**
@@ -34,7 +32,6 @@ public class LeeCoRpcServer {
             bootstrap.group(bossGroup,workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG,100)
-                    .handler(new LoggingHandler(LogLevel.INFO))
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
@@ -49,8 +46,10 @@ public class LeeCoRpcServer {
                                     .addLast(new HeartBeatRespHandler());
                         }
                     });
-            ChannelFuture sync = bootstrap.bind(NettyConstant.REMOTEIP, NettyConstant.PORT).sync();
-//            sync.channel().closeFuture().sync();
+            ChannelFuture sync = bootstrap.bind(NettyConstant.REMOTE_IP, NettyConstant.PORT).sync();
+            sync.channel().closeFuture().sync();
+        }catch (Exception e){
+            e.printStackTrace();
         }finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
