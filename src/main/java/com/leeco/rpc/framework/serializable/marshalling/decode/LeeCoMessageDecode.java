@@ -1,7 +1,7 @@
-package com.leeco.rpc.framework.marshalling.decode;
+package com.leeco.rpc.framework.serializable.marshalling.decode;
 
-import com.leeco.rpc.framework.message.Header;
-import com.leeco.rpc.framework.message.LeeCoMessage;
+import com.leeco.rpc.framework.protocol.Header;
+import com.leeco.rpc.framework.protocol.LeeCoMessage;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class LeeCoMessageDecode extends LengthFieldBasedFrameDecoder {
 
-    MarshallingDecoder marshallingDecoder;
+    private MarshallingDecoder marshallingDecoder;
 
     public LeeCoMessageDecode(int maxFrameLength, int lengthFieldOffset, int lengthFieldLength) throws IOException {
         super(maxFrameLength, lengthFieldOffset, lengthFieldLength);

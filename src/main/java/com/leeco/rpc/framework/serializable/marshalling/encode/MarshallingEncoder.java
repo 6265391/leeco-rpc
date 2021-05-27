@@ -1,7 +1,7 @@
-package com.leeco.rpc.framework.marshalling.encode;
+package com.leeco.rpc.framework.serializable.marshalling.encode;
 
-import com.leeco.rpc.framework.marshalling.ChannelBufferByteOutput;
-import com.leeco.rpc.framework.marshalling.MarshallingCodeFactory;
+import com.leeco.rpc.framework.serializable.marshalling.ChannelBufferByteOutput;
+import com.leeco.rpc.framework.serializable.marshalling.MarshallingCodeFactory;
 import io.netty.buffer.ByteBuf;
 import org.jboss.marshalling.Marshaller;
 

@@ -1,15 +1,12 @@
-package com.leeco.rpc.framework.marshalling.encode;
+package com.leeco.rpc.framework.serializable.marshalling.encode;
 
-import com.leeco.rpc.framework.message.LeeCoMessage;
+import com.leeco.rpc.framework.protocol.LeeCoMessage;
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
-import io.netty.handler.codec.MessageToMessageEncoder;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 import java.util.Map;
 
 /**

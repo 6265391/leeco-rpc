@@ -1,4 +1,4 @@
-package com.leeco.rpc.framework.message;
+package com.leeco.rpc.framework.protocol;
 
 /**
  * 自定义协议栈 -> 消息定义

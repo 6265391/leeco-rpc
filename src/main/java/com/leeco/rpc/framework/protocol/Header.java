@@ -1,4 +1,4 @@
-package com.leeco.rpc.framework.message;
+package com.leeco.rpc.framework.protocol;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,4 +1,4 @@
-package com.leeco.rpc.framework.marshalling;
+package com.leeco.rpc.framework.serializable.marshalling;
 import io.netty.buffer.ByteBuf;
 import org.jboss.marshalling.ByteInput;
 import org.jboss.marshalling.ByteOutput;

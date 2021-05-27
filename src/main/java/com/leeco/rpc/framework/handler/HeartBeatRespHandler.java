@@ -2,13 +2,10 @@ package com.leeco.rpc.framework.handler;
 
 import com.leeco.rpc.framework.LeeCoRpcApplication;
 import com.leeco.rpc.framework.core.MessageType;
-import com.leeco.rpc.framework.message.Header;
-import com.leeco.rpc.framework.message.LeeCoMessage;
+import com.leeco.rpc.framework.protocol.Header;
+import com.leeco.rpc.framework.protocol.LeeCoMessage;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 心跳应答消息

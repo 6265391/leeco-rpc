@@ -1,4 +1,4 @@
-package com.leeco.rpc.framework.marshalling;
+package com.leeco.rpc.framework.serializable.marshalling;
 
 import org.jboss.marshalling.*;
 
